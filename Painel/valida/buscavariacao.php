@@ -8,16 +8,7 @@ $database = "painel_gtc";
 $id_linha = $_POST['id_linha'];
 
 $conn = mysqli_connect($hostname, $username, $password ,$database);
-//consulta datas;  
-//select que recebe os parametros da funcao
- /*   $sql = "SELECT 
-                id
-                ,nome
-            FROM gtc_linhas_variacao
-            WHERE id_linha='$num_linha'
-            ";
-    $result = $conn->query($sql);
-*/
+
 ?>
 
 <select id="id_variacao" class="selectpicker form-control show-tick">
@@ -38,3 +29,26 @@ $conn = mysqli_connect($hostname, $username, $password ,$database);
             }
         ?>
 </select>
+<script>
+          $('#id_variacao').change(function(){
+            var id_variacao = $('#id_variacao').val();
+            var num_linha = $('#num_linha').val();
+            console.log(num_linha);
+            console.log(id_variacao);
+            $.ajax({
+		      type:'post',
+		      url: './carrega/carregahorarios.php',
+		      data: {
+                  'num_linha':num_linha,
+                  'id_variacao':id_variacao
+              },
+              erro: function(){
+                  alert('erro');
+              },
+		      success: function(data){
+		          $("#tabela_horarios").html(data);
+		      }
+
+		    });
+        });
+    </script>
