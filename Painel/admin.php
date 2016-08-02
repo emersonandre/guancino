@@ -163,31 +163,36 @@ session_start();
                     <li class="active">
                         <a href="admin.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                     <li>
-                        <a href="#" id="btnCadLinhas"><i class="fa fa-fw fa-edit"></i>Cadastro Linhas</a>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#linhas"><i class="fa fa-fw fa-arrows-v"></i>Linhas<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="linhas" class="collapse">
+                             <li>
+                                <a href="#" id="btnCadLinhas"><i class="fa fa-fw fa-edit"></i>Cadastro Linhas</a>
+                            </li>
+                            <li>
+                                <a href="#" id="btnCadVariacao"><i class="fa fa-fw fa-edit"></i>Cadastro Variação</a>
+                            </li>
+                            <li>
+                                <a href="#" id="btnCadHorarios"><i class="fa fa-fw fa-edit"></i>Cadastro Horarios</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#" id="btnCadVariacao"><i class="fa fa-fw fa-edit"></i>Cadastro Variação</a>
-                    </li>
-                    <li>
-                        <a href="#" id="btnCadHorarios"><i class="fa fa-fw fa-edit"></i>Cadastro Horarios</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usuario"><i class="fa fa-fw fa-arrows-v"></i>Usuarios<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="usuario" class="collapse">
+                            <li>
+                                <a id="btnCadUsuario" href="#"><i class="fa fa-list-alt"></i> Cadastrar Usuario</a>
+                            </li>
+                            <li>
+                                <a id="btnEditUsuario" href="#"><i class="fa fa-list-alt"></i> Editar Usuario</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#" id="btnbk"><i class="fa fa-fw fa-file"></i> Blank Page</a>
@@ -235,6 +240,7 @@ session_start();
     <script src="../js/plugins/morris/raphael.min.js"></script>
     <script src="../js/plugins/morris/morris.min.js"></script>
     <script src="../js/plugins/morris/morris-data.js"></script>
+    <script src="../js/md5.js"></script>
     <script type="text/javascript">
         $("#btnCadLinhas").click(function(){
             $("#conteudo_principal").load("./cad-linhas.php");
@@ -245,7 +251,12 @@ session_start();
         $("#btnCadHorarios").click(function(){
             $("#conteudo_principal").load("./cad-horarios.php");
         });
-        
+        $("#btnCadUsuario").click(function(){
+            $("#conteudo_principal").load("./cad-usuario.php");
+        });
+        $("#btnEditUsuario").click(function(){
+            $("#conteudo_principal").load("./edit-usuario.php");
+        });
        /* $("#btntables").click(function(){
             $("#conteudo_principal").load("tables.php");
         });
