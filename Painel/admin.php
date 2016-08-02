@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+session_set_cookie_params(3600);
+session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
         header('location:./login/index.html');
