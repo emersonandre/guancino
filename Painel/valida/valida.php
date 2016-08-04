@@ -3,7 +3,7 @@
 // as variáveis login e senha recebem os dados digitados na p�gina anterior
 
 $login = $_POST['user'];
-$senha = $_POST['password'];
+$senha = md5($_POST['password']);
 
 //variaveis de conexão;
 

@@ -3,8 +3,8 @@ include '../bd/conecta.php';
 
 $user_nome = $_POST['user-nome'];
 $user_usuario = $_POST['user-usuario'];
-$user_senha = $_POST['user-senha'];
-$user_repsenha = $_POST['user-repsenha'];
+$user_senha = md5($_POST['user-senha']);
+$user_repsenha = md5($_POST['user-repsenha']);
 $user_nivel = $_POST['user-nivel'];
 
 if($user_senha == $user_repsenha){   

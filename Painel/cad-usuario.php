@@ -10,12 +10,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-</head>
-
 <body>
     <div class="row">
         <div class="col-lg-12">
@@ -74,15 +68,8 @@ session_start();
                 </div> 
         </div>
     </div>
-    <script src="../js/md5.js"></script>
     <script>        
 		$("#btnGravarUser").click(function(){
-            var senha = $('#user_senha').val();
-            var repsenha = $('#user_repsenha').val();
-            user_senha = md5(senha);
-            user_repsenha = md5(repsenha);
-            console.log(senha);
-            console.log(repsenha);
 			$.ajax({
 				type:'post',
 				url:'./valida/gravausuario.php',
@@ -97,20 +84,9 @@ session_start();
 				timeout: '10000',
                 statusCode:{
                         200: function(){
-                                $("#tabela_usuarios").html(data);
-                                $('#div_retorno_usuario').load('./pages/pag-success.php');
+                                $('#div_retorno_usuario').load('./pages/cadastroUSER/pag-cad-success.php');
                           },
-                          400: function(){
-                              //acao do erro aqui
-                              $('#div_retorno_usuario').load('./pages/cadastroHR/pag-cad-info.php');
-                          },
-                          401: function(){
-                              //acao do erro aqui
-                              $('#div_retorno_usuario').load('./pages/pag-danger.php');
-                          },
-                          500: function(){
-                              $('#div_retorno_usuario').load('./pages/cadastroHR/pag-cad-existe.php');
-                        }   
+  
                     }
                 });
             });
