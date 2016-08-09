@@ -10,12 +10,13 @@ $senha = md5($_POST['password']);
 include '../bd/conecta.php';
 
 //resolve conexão com o banco!
-	$result = mysqli_query($conn,"SELECT id,usuario FROM gtc_usuario WHERE usuario= '$login' AND senha= '$senha'");
+	$result = mysqli_query($conn,"SELECT id,usuario,flag FROM gtc_usuario WHERE usuario= '$login' AND senha= '$senha'");
 	// Verifica se o usuario logado esta ativo.
 	if(mysqli_num_rows($result) > 0 ) {
     while($row = $result->fetch_assoc()) {
 	$_SESSION['id'] = $row['id'];   
     $_SESSION['login'] = $row['usuario'];
+    $_SESSION['acesso'] = $row['flag'];    
     header('location:../admin.php'); }}
     else{
         header('location:http://www.guancino.com.br');

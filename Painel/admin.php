@@ -7,6 +7,13 @@ session_start();
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+    
+    if($acesso == '1'){
+        echo '<style>#divNivelAcesso { visibility: visible; }</style>';
+    } else {
+        echo '<style>#divNivelAcesso { visibility: hidden; }</style>';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -183,8 +190,8 @@ session_start();
                             <li>
                                 <a id="btnCadUsuario" href="#"><i class="fa fa-list-alt"></i> Cadastrar Usuario</a>
                             </li>
-                            <li>
-                                <a id="btnEditUsuario" href="#"><i class="fa fa-list-alt"></i> Editar Usuario</a>
+                            <li id="divNivelAcesso">
+                                    <a id="btnEditUsuario" href="#"><i class="fa fa-list-alt"></i> Editar Usuario</a>
                             </li>
                         </ul>
                     </li>
@@ -241,6 +248,13 @@ session_start();
     <script src="../js/plugins/morris/morris.min.js"></script>
     <script src="../js/plugins/morris/morris-data.js"></script>
     <script src="../js/md5.js"></script>
+    <script type=text/javascript>
+        $(function() {
+            $("#a").keypress(function() {
+                $("div#divNivelAcesso").hide();
+            });
+        });
+    </script>
     <script type="text/javascript">
         $("#btnCadLinhas").click(function(){
             $("#conteudo_principal").load("./cad-linhas.php");
@@ -256,18 +270,7 @@ session_start();
         });
         $("#btnEditUsuario").click(function(){
             $("#conteudo_principal").load("./edit-usuario.php");
-        });
-       /* $("#btntables").click(function(){
-            $("#conteudo_principal").load("tables.php");
-        });
-        
-        $("#btnforms").click(function(){
-            $("#conteudo_principal").load("forms.php");
-        });*/
-      //  $("#btnAcompanhante").click(function(){
-      //      $("#descricao").load("./pag-desc/desc-acompanhante.html");
-      //  });
-       
+        }); 
     </script>
 
 </body>

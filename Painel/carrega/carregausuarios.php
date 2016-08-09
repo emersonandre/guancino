@@ -2,8 +2,6 @@
 
 include './bd/conecta.php';
 
-$senha='******';
-
 $sql="SELECT 
         id
         ,nome

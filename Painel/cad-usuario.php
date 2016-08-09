@@ -62,7 +62,7 @@ session_start();
                     </li>
                 </ol>
                 <div class="container">
-                   <div class="table-responsive" id="tabela_usuarios">
+                   <div class="table-responsive" id="div_carrega_usuarios">
                        <?php include './carrega/carregausuarios.php';  ?> 
                     </div>
                 </div> 
@@ -84,7 +84,8 @@ session_start();
 				timeout: '10000',
                 statusCode:{
                         200: function(){
-                                $('#div_retorno_usuario').load('./pages/cadastroUSER/pag-cad-success.php');
+                            $('#div_retorno_usuario').load('./pages/cadastroUSER/pag-cad-success.php');
+                            $('#div_carrega_usuarios').load('./carrega/carregausuarios.php');
                           },
   
                     }
