@@ -18,14 +18,14 @@ if (!$conn) {
 //$con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o servidor");
 //consulta datas;  
 //select que recebe os parametros da funcao
-    $sql = "SELECT 
+    $sql = "select 
                 hr.id
                 ,concat(li.numero,' - ',li.nome)
-                ,case hr.id_variacao
-                	when 0 then 'SEM VARIACAO'
+                ,case hr.id_variacao  
+                    when 0 then 'Sem Variacao'
                     else vr.nome
-                 end as variacao
-                ,hr.horario
+                end as variacao
+                ,hr.horario as horario
                 ,case hr.segunda
                     when 0 then 'NAO'
                     when 1 then 'SIM'
@@ -54,14 +54,13 @@ if (!$conn) {
                     when 0 then 'NAO'
                     when 1 then 'SIM'
                 end as domingo
-                
-           FROM 
+            from
                 gtc_horarios hr
-                left join gtc_linhas li on (hr.id_linha = li.id)
-                inner join gtc_linhas_variacao vr on (vr.id_linha = li.id)
+                inner join gtc_linhas li on (hr.id_linha=li.id)
+                left join gtc_linhas_variacao vr on (hr.id_variacao = vr.id)
 
-            WHERE 
-                hr.id_linha='$num_linha'
+            where 
+                hr.id_linha='$num_linha' 
                 
             ";
     
@@ -86,21 +85,21 @@ if (!$conn) {
     if(!empty($_POST['id_variacao'])){
           $sql.= "                              
                 and hr.id_variacao = '$id_variacao'
-              ";
-        }
+                ";
+    }
     //fim da verificacao
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $tabela .="<tr>";
-            $tabela .="<td>".$row["concat(li.numero,' - ',li.nome)"]."</td>";
+            $tabela .="<td class='alin_txt'<span><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></span></td>";
             $tabela .="<td>".$row["variacao"]."</td>";
-            $tabela .="<td>".$row["horario"]."</td>";
+            $tabela .="<td <h5><span class='badge'>".$row["horario"]."</span></h5></td>";
             if($row["segunda"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["segunda"]."</span></h4></td>";
+                    $tabela .="<td class='alin_td'><h4><span><span class='label label-success'>".$row["segunda"]."</span></span></h4></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["segunda"]."</span></h4></td>";
+                    $tabela .="<td class='alin_td'><h4><span><span class='label label-danger'>".$row["segunda"]."</span></span></h4></td>";
                 }
             if($row["terca"] == 'SIM'){
                     $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["terca"]."</span></h4></td>";
@@ -132,7 +131,7 @@ if (!$conn) {
                 }else{
                     $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["domingo"]."</span></h4></td>";
                 }
-            $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluirHr($(this).val())'> <i class='fa fa-trash-o fa-lg'></i> Deletar</a></button></td>";
+            $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluirHr($(this).val())'> <span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
             "<br>";
         }
     }

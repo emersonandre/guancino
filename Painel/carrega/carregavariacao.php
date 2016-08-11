@@ -15,16 +15,15 @@ if (!$conn) {
 //$con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o servidor");
 //consulta datas;  
 //select que recebe os parametros da funcao
-    $sql = "SELECT 
-                 vr.id
-                 ,concat(li.numero,' - ',li.nome)
-                 ,vr.nome
-                 ,vr.obs 
-
-            FROM 
-                gtc_linhas_variacao vr
-                left join gtc_linhas li on (vr.id_linha = li.id)
-            WHERE id_linha='$id_linha'
+    $sql = "select 
+                vr.id as id
+                ,concat(li.numero,' - ',li.nome)
+                ,vr.nome as nome
+                ,vr.obs as obs
+            from gtc_linhas_variacao vr
+                inner join gtc_linhas li on (vr.id_linha = li.id)
+            where 
+                vr.id_linha = '$id_linha'
             ";
     $tabela = "<table class='table table-hover'>
                 <thead class='thead-inverse'>
@@ -44,10 +43,10 @@ if (!$conn) {
         while($row = $result->fetch_assoc()) {
             $tabela .="<tr>";
             $tabela .="<td>".$row["id"]."</td>";
-            $tabela .="<td>".$row["concat(li.numero,' - ',li.nome)"]."</td>";
+            $tabela .="<td <h4><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></h4></td>";
             $tabela .="<td>".$row["nome"]."</td>";
             $tabela .="<td>".$row["obs"]."</td>";
-            $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluir($(this).val())' >Excluir</button></td>";
+            $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluir($(this).val())' ><span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
             "<br>";
         }
     }

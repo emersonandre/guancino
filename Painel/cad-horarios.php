@@ -14,11 +14,17 @@
 <link href="../css/plugins/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+<link href="../css/label.css" rel="stylesheet">
 <style>
     .alin_td{
         text-align: center;
         margin-top: 0px;
+    }
+    .alin_txt{
+        text-align: left;
+        margin-top: auto;
+        vertical-align: center;
+        background: write;
     }
     </style>
 </head>
@@ -175,11 +181,12 @@
                 statusCode:{
                         200: function(){
                                 var num_linha = $('#num_linha').val();
-                                console.log(num_linha);                 
+                                var id_variacao = $('#id_variacao').val();
+                                //console.log(num_linha);                 
                                 $.ajax({
                                   type:'post',
                                   url: './carrega/carregahorarios.php',
-                                  data: {'num_linha':num_linha},
+                                  data: {'num_linha':num_linha,'id_variacao':id_variacao},
                                   success: function(data){
                                       $("#tabela_horarios").html(data);
                                       $('#retorno').load('./pages/pag-success.php');
@@ -211,12 +218,13 @@
 		      data: {'id':id},
               error: function(error){
                     $('#retorno').load('./pages/pag-exc-danger.php');
-                  var num_linha = $('#num_linha').val();
+                    var num_linha = $('#num_linha').val();
+                    var id_variacao = $('#id_variacao').val();
                     console.log(num_linha);
                     $.ajax({
                       type:'post',
                       url: './carrega/carregahorarios.php',
-                      data: {'num_linha':num_linha},
+                      data: {'num_linha':num_linha,'id_variacao':id_variacao},
                       erro: function(){
                           alert('erro');
                       },
@@ -229,11 +237,12 @@
 		      success: function(){
                   $('#retorno').load('./pages/pag-exc-success.php');
                   var num_linha = $('#num_linha').val();
+                  var id_variacao = $('#id_variacao').val();
                     console.log(num_linha);
                     $.ajax({
                       type:'post',
                       url: './carrega/carregahorarios.php',
-                      data: {'num_linha':num_linha},
+                      data: {'num_linha':num_linha,'id_variacao':id_variacao},
                       erro: function(){
                           alert('erro');
                       },

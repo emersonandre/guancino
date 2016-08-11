@@ -108,7 +108,7 @@
                   $("#div_retorno_variacao").load('./pages/pag-exc-danger.php');
               },
 		      success: function(){
-		          $("#tab_variacao").load('./valida/carregavariacao.php');
+		          $("#tab_variacao").load('./carrega/carregavariacao.php');
                   $("#div_retorno_variacao").load('./pages/pag-exc-success.php');
 		          //alert("Excluido com Sucesso!");
 		      }
