@@ -12,6 +12,18 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+        .alin-table{
+            text-align: center;
+            vertical-align: top;
+        }
+      table {
+          border: 1px solid ;
+          margin-top: 10px; 
+          width: 50%;
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -38,18 +50,6 @@
                 </div>
                 <div id='divCarregaVariacao' class="form-group" >
                     
-                </div>
-                <div class="form-group">
-                    <select id="busca_dia" class="selectpicker form-control show-tick">
-                            <option value="">Selecione o Dia...</option>
-                            <option value="1">Domingo/Feriado</option>
-                            <option value="2">Segunda-Feira</option>
-                            <option value="3">Terça-Feira</option>
-                            <option value="4">Quarta-Feira</option>
-                            <option value="5">Quinta-Feira</option>    
-                            <option value="6">Sexta-Feira</option>
-                            <option value="7">Sabádo</option>
-                    </select>
                 </div>
             </div>
             <div id="divCarregaHorarios" class="col-lg-12">

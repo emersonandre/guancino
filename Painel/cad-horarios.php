@@ -15,18 +15,6 @@
 <!-- Custom Fonts -->
 <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="../css/label.css" rel="stylesheet">
-<style>
-    .alin_td{
-        text-align: center;
-        margin-top: 0px;
-    }
-    .alin_txt{
-        text-align: left;
-        margin-top: auto;
-        vertical-align: center;
-        background: write;
-    }
-    </style>
 </head>
 
 <body>

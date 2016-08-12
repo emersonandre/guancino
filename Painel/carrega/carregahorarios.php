@@ -66,20 +66,21 @@ if (!$conn) {
     
     $tabela = "<table class='table table-hover'>
                 <thead class='thead-inverse'>
+                  <thead BGCOLOR=black>
                   <tr>
-                    <th width='30%'>Linha</th>
-                    <th width='30%'>variação</th>
-                    <th width='5%'>Horario</th>
-                    <th class='alin_td' width='8%'>Segunda</th>
-                    <th class='alin_td' width='8%'>Terça</th>
-                    <th class='alin_td' width='8%'>Quarta</th>
-                    <th class='alin_td' width='8%'>Quinta</th>
-                    <th class='alin_td' width='8%'>Sexta</th>
-                    <th class='alin_td' width='8%'>Sabado</th>
-                    <th class='alin_td' width='8%'>Domingo/Feriado</th>
-                    <th class='alin_td' width='8%'>Ação</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Linha</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>variação</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Horario</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Segunda</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Terça</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Quarta</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Quinta</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Sexta</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Sabado</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Domingo/Feriado</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Ação</th>
                   </tr>
-                </thead>
+                </thead>   
               <tbody>";
     //verifica se a variavel esta vazia! e concatena para recarregar com a variacao
     if(!empty($_POST['id_variacao'])){
@@ -93,44 +94,45 @@ if (!$conn) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $tabela .="<tr>";
-            $tabela .="<td class='alin_txt'<span><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></span></td>";
+            $tabela .="<td class='alin-table'<span><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></span></td>";
             $tabela .="<td>".$row["variacao"]."</td>";
-            $tabela .="<td <h5><span class='badge'>".$row["horario"]."</span></h5></td>";
+            $tabela .="<td class='alin-table'<h5><span class='badge'>".$row["horario"]."</span></h5></td>";
             if($row["segunda"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span><span class='label label-success'>".$row["segunda"]."</span></span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span><span class='label label-danger'>".$row["segunda"]."</span></span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
-            if($row["terca"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["terca"]."</span></h4></td>";
+           if($row["terca"] == 'SIM'){
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["terca"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
             if($row["quarta"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["quarta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["quarta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
             if($row["quinta"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["quinta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["quinta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
             if($row["sexta"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["sexta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["sexta"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
             if($row["sabado"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["sabado"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["sabado"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
             if($row["domingo"] == 'SIM'){
-                    $tabela .="<td class='alin_td'><h4><span class='label label-success'>".$row["domingo"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/certo.png'alt='Sim'> </span></td>";
                 }else{
-                    $tabela .="<td class='alin_td'><h4><span class='label label-danger'>".$row["domingo"]."</span></h4></td>";
+                    $tabela .="<td class='alin-table'><span><img src='../img/errado.png'alt='Não'> </span></td>";
                 }
+                
             $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluirHr($(this).val())'> <span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
             "<br>";
         }

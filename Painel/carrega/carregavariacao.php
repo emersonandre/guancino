@@ -26,13 +26,13 @@ if (!$conn) {
                 vr.id_linha = '$id_linha'
             ";
     $tabela = "<table class='table table-hover'>
-                <thead class='thead-inverse'>
+                <thead BGCOLOR=black>
                   <tr>
-                    <th>Código</th>
-                    <th>Numero/Linha</th>
-                    <th>Nome Variacao</th>
-                    <th>Observação</th>
-                    <th>Ação</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Código</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Numero/Linha</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Nome Variacao</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Observação</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Ação</th>
                   </tr>
                 </thead>
               <tbody>";
@@ -42,11 +42,11 @@ if (!$conn) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $tabela .="<tr>";
-            $tabela .="<td>".$row["id"]."</td>";
-            $tabela .="<td <h4><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></h4></td>";
-            $tabela .="<td>".$row["nome"]."</td>";
-            $tabela .="<td>".$row["obs"]."</td>";
-            $tabela .="<td><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluir($(this).val())' ><span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
+            $tabela .="<td class='alin-table'>".$row["id"]."</td>";
+            $tabela .="<td class='alin-table'<h4><span><span class='badge'>".$row["concat(li.numero,' - ',li.nome)"]."</span></span></h4></td>";
+            $tabela .="<td class='alin-table'>".$row["nome"]."</td>";
+            $tabela .="<td class='alin-table'>".$row["obs"]."</td>";
+            $tabela .="<td class='alin-table'><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluir($(this).val())' ><span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
             "<br>";
         }
     }

@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+<link href="/css/label.css" rel="stylesheet">
 </head>
 
 <body>

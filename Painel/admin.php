@@ -36,6 +36,7 @@ session_start();
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <link href="../css/label.css" rel="stylesheet">
 </head>
 
 <body>
@@ -81,7 +82,7 @@ session_start();
                                     <a id="btnEditUsuario" href="#"><i class="fa fa-list-alt"></i> Editar Usuario</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> 
                   <!--  <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
