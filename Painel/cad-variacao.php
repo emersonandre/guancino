@@ -43,7 +43,7 @@ session_start();
                               </div>
                           </div>
                           <div class="form-group">
-                            <label for="variacao">Linha:</label>
+                            <label for="variacao">Variação de Linha:</label>
                             <input type="text" class="form-control" id="cad_variacao" placeholder="Nome da Variacao">
                           </div>
                           <div class="form-group">
