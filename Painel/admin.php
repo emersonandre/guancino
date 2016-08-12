@@ -27,16 +27,20 @@ session_start();
     <meta name="author" content="">
 
     <title> Admin - Guancino Transportes</title>
-    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap-checkbox.css" rel="stylesheet">
+    <link href="../css/bootstrap-checkbox.less" rel="stylesheet">
+    <link href="../css/bootstrap-checkbox.scss" rel="stylesheet">
+    <link href="../css/padrao.css" rel="stylesheet">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="../css/plugins/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <link href="../css/label.css" rel="stylesheet">
+    <!-- Custom Fonts -->
 </head>
 
 <body>
@@ -125,13 +129,17 @@ session_start();
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
+     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
     <!-- Morris Charts JavaScript -->
     <script src="../js/plugins/morris/raphael.min.js"></script>
+    <script src="../js/bootstrap-checkbox.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/jmask.js" type="text/javascript"></script>
     <script src="../js/plugins/morris/morris.min.js"></script>
     <script src="../js/plugins/morris/morris-data.js"></script>
+    <script src="../js/plugins/morris/morris.js"></script>
     <script src="../js/md5.js"></script>
     <script type=text/javascript>
         $(function() {

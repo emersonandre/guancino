@@ -1,17 +1,16 @@
-<?php
-$hostname = "localhost";
-$username = "master";
-$password = "145819";
-$database = "painel_gtc";
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
 
-$conn = mysqli_connect($hostname, $username, $password ,$database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}else {
-//resolve conexão com o banco!
-//$con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o servidor");
-//consulta datas;  
+
+ include "./bd/conecta.php"; 
 //select que recebe os parametros da funcao
     $sql = "SELECT 
                 id
@@ -21,11 +20,11 @@ if (!$conn) {
             FROM gtc_linhas
             WHERE 1
             ";
+
     $tabela = "<table class='table table-hover'>
                 <thead BGCOLOR=black>
                   <tr>
-                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Código</th>
-                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Nmero Linha</th>
+                    <th class='alin-table'><FONT COLOR='#FFFFFF'>Numero Linha</th>
                     <th class='alin-table'><FONT COLOR='#FFFFFF'>Nome</th>
                     <th class='alin-table'><FONT COLOR='#FFFFFF'>Observação</th>
                     <th class='alin-table'><FONT COLOR='#FFFFFF'>Ação</th>
@@ -38,7 +37,6 @@ if (!$conn) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $tabela .="<tr>";
-            $tabela .="<td class='alin-table'>".$row["id"]."</td>";
             $tabela .="<td class='alin-table'><span><span class='badge'>".$row["numero"]."</span></span></td>";
             $tabela .="<td class='alin-table'>".$row["nome"]."</td>";
             $tabela .="<td class='alin-table'>".$row["obs"]."</td>";
@@ -49,5 +47,3 @@ if (!$conn) {
         $tabela .= "</tbody></table>";
 
         echo  $tabela;
-}
-?>

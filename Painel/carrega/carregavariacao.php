@@ -1,19 +1,19 @@
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+?>
 <?php
-$hostname = "localhost";
-$username = "master";
-$password = "145819";
-$database = "painel_gtc";
+include '../bd/conecta.php';
 
 $id_linha = $_POST['id_linha'];
 
-$conn = mysqli_connect($hostname, $username, $password ,$database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}else {
-//resolve conexão com o banco!
-//$con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o servidor");
-//consulta datas;  
 //select que recebe os parametros da funcao
     $sql = "select 
                 vr.id as id
@@ -23,8 +23,9 @@ if (!$conn) {
             from gtc_linhas_variacao vr
                 inner join gtc_linhas li on (vr.id_linha = li.id)
             where 
-                vr.id_linha = '$id_linha'
+                1
             ";
+
     $tabela = "<table class='table table-hover'>
                 <thead BGCOLOR=black>
                   <tr>
@@ -36,6 +37,12 @@ if (!$conn) {
                   </tr>
                 </thead>
               <tbody>";
+
+      if(!empty($_POST['id_linha'])){
+          $sql.= "                              
+                and vr.id_linha = '$id_linha'
+                ";
+    } 
 
     $result = $conn->query($sql);
 
@@ -53,5 +60,4 @@ if (!$conn) {
         $tabela .= "</tbody></table>";
 
         echo  $tabela;
-}
 ?>

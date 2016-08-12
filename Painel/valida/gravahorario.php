@@ -1,8 +1,16 @@
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+?>
 <?php
-$hostname = "localhost";
-$username = "master";
-$password = "145819";
-$database = "painel_gtc";
+include '../bd/conecta.php';
 
 $num_linha = $_POST['num_linha'];
 $id_variacao = $_POST['id_variacao'];
@@ -50,14 +58,9 @@ if($radio7 == 'true'){
         $radio7 = '0';
     }
 
-$conn = mysqli_connect($hostname, $username, $password ,$database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}else{
     //inicio das condiçoes de query
-    if($num_linha != "" and $horario  != ""){ //verifica se todos os dados obrigatorios foram preenchidos
-        $consulta_query = "SELECT * FROM gtc_horarios WHERE id_linha='$num_linha' and horario='$horario'";
+if($num_linha != "" and $horario  != ""){ //verifica se todos os dados obrigatorios foram preenchidos
+        $consulta_query = "SELECT * FROM gtc_horarios WHERE id_linha='$num_linha' and horario='$horario' and id_variacao='$id_variacao'";
         //executa a query de consulta para linha e horario;
         $result_query = mysqli_query($conn,$consulta_query);
         if(mysqli_num_rows ($result_query) > 0 ) {  // retorno da consulta de horario e linha;
@@ -76,7 +79,7 @@ if (!$conn) {
         header("HTTP/1.0 400 Por Favor Preencha todos os Dados Corretamente!");
     //echo "<script> alert('Por Favor Preencha todos os Dados Corretamente!'); </script>";
     }  
-}//fim do else !$conn
+//}//fim do else !$conn
 
 mysqli_close($conn);//encera conexao com o banco
 ?>

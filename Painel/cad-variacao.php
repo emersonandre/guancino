@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-<link href="/css/label.css" rel="stylesheet">
-</head>
-
-<body>
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -89,12 +92,25 @@
 					//alert("Erro!");
                     $("#div_retorno_variacao").load('./pages/pag-danger.php');
 				},
-				success: function(){
+                success: function(){
                     $('#div_retorno_variacao').load('./pages/pag-success.php');
-                    $('#tab_variacao').load('./carrega/carregavariacao.php');
-					//alert("Cadastrado com Sucesso!");
-				}
-			});
+		            //$('#tab_variacao').load('./carrega/carregavariacao.php');
+		          }
+			}),
+            $.ajax({
+		      type:'post',
+		      url: './carrega/carregavariacao.php',
+		      data: {
+                    'id_linha':$('#id_linha').val(),
+                    },
+              erro: function(){
+                  alert('erro');
+              },
+		      success: function(data){
+		          $("#tab_variacao").html(data);
+		      }
+
+		    });
 		});
     </script>
       <!-- function excluir dados da tabela-->
@@ -137,6 +153,3 @@
         });
     </script>
     
-</body>
-
-</html>

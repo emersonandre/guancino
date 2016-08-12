@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<link href="../css/bootstrap-checkbox.css" rel="stylesheet">
-<link href="../css/bootstrap-checkbox.less" rel="stylesheet">
-<link href="../css/bootstrap-checkbox.scss" rel="stylesheet">
-<link href="../css/padrao.css" rel="stylesheet">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="../css/sb-admin.css" rel="stylesheet">
-<!-- Morris Charts CSS -->
-<link href="../css/plugins/morris.css" rel="stylesheet">
-<!-- Custom Fonts -->
-<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../css/label.css" rel="stylesheet">
-</head>
-
-<body>
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -135,17 +126,6 @@
                 </div>
         </div>
     </div>
-     <script src="../js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="../js/plugins/morris/raphael.min.js"></script>
-    <script src="../js/bootstrap-checkbox.js"></script>
-    <script src="../js/bootstrap-datetimepicker.min.js"></script>
-    <script src="../js/jmask.js" type="text/javascript"></script>
-    <script src="../js/plugins/morris/morris.min.js"></script>
-    <script src="../js/plugins/morris/morris-data.js"></script>
-    <script src="../js/plugins/morris/morris.js"></script>
     <!-- function Gravar os dados -->
     <script>        
 		$("#btnGravarHr").click(function(){
@@ -292,32 +272,3 @@
                  }
                  }
     </script>
-    <!-- Function carrega select variacao -->
-    <!--<script>
-          $('#id_variacao').change(function(){
-            var id_variacao = $('#id_variacao').val();
-            var num_linha = $('#num_linha').val();
-            console.log(num_linha);
-            console.log(id_variacao);
-            $.ajax({
-		      type:'post',
-		      url: './carrega/carregahorarios.php',
-		      data: {
-                  'num_linha':num_linha,
-                  'id_variacao':id_variacao
-              },
-              erro: function(){
-                  alert('erro');
-              },
-		      success: function(data){
-		          $("#tabela_horarios").html(data);
-		      }
-
-		    });
-        });
-    </script>
-    <!-- fim Function carrega tabela apos selecionar linhas -->
-    <!-- Function mascara -->
-</body>
-
-</html>

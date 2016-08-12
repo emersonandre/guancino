@@ -1,11 +1,16 @@
+<?php 
+session_set_cookie_params(3600);
+session_start();
+    if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
+    {
+        header('location:./login/index.html');
+    }
+    $id_user = $_SESSION['id'];
+    $logado = $_SESSION['login'];
+    $acesso = $_SESSION['acesso']; 
+?>
 <?php
-$hostname = "localhost";
-$username = "master";
-$password = "145819";
-$database = "painel_gtc";
-
-$conn = mysqli_connect($hostname, $username, $password ,$database);
-
+include '../bd/conecta.php';
 
 $num_linha = $_POST['num_linha'];
 $id_variacao = $_POST['id_variacao'];
