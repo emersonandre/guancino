@@ -3,7 +3,7 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
@@ -16,7 +16,7 @@ session_start();
             </h1>
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="admin.html">Dashboard</a>
+                        <i class="fa fa-dashboard"></i>  <a href="../Painel/admin.html">Dashboard</a>
                     </li>
                     <li class="active" >
                         <i class="fa fa-file"></i> Cadastro Variacao
@@ -32,7 +32,7 @@ session_start();
                                 <div class="form-group">
                                   <select id="id_linha" class="selectpicker form-control show-tick">
                                     <option value="">Selecione a Linha...</option>
-                                          <?php include './valida/buscalinhas.php'; ?>
+                                          <?php include '../Painel/valida/buscalinhas.php'; ?>
                                           <?php if ($result->num_rows > 0) {
                                                 while($row = $result->fetch_assoc()) {
                                              ?>
@@ -81,7 +81,7 @@ session_start();
 		$("#btnGravarVr").click(function(){
 			$.ajax({
 				type:'post',
-				url:'./valida/gravavariacao.php',
+				url:'../Painel/valida/gravavariacao.php',
 				data:{
 					'id_linha':$('#id_linha').val(),
 					'variacao':$('#cad_variacao').val(),
@@ -90,16 +90,16 @@ session_start();
 				timeout: '10000',
 				error: function(error){
 					//alert("Erro!");
-                    $("#div_retorno_variacao").load('./pages/pag-danger.php');
+                    $("#div_retorno_variacao").load('../Painel/pages/pag-danger.php');
 				},
                 success: function(){
-                    $('#div_retorno_variacao').load('./pages/pag-success.php');
+                    $('#div_retorno_variacao').load('../Painel/pages/pag-success.php');
 		            //$('#tab_variacao').load('./carrega/carregavariacao.php');
 		          }
 			}),
             $.ajax({
 		      type:'post',
-		      url: './carrega/carregavariacao.php',
+		      url: '../Painel/carrega/carregavariacao.php',
 		      data: {
                     'id_linha':$('#id_linha').val(),
                     },
@@ -122,11 +122,11 @@ session_start();
 		      data: {'id':id},
               error: function(error){
 				  //alert("Erro!");
-                  $("#div_retorno_variacao").load('./pages/pag-exc-danger.php');
+                  $("#div_retorno_variacao").load('../Painel/pages/pag-exc-danger.php');
               },
 		      success: function(){
-		          $("#tab_variacao").load('./carrega/carregavariacao.php');
-                  $("#div_retorno_variacao").load('./pages/pag-exc-success.php');
+		          $("#tab_variacao").load('../Painel/carrega/carregavariacao.php');
+                  $("#div_retorno_variacao").load('../Painel/pages/pag-exc-success.php');
 		          //alert("Excluido com Sucesso!");
 		      }
 
@@ -140,7 +140,7 @@ session_start();
             console.log(id_linha);
             $.ajax({
 		      type:'post',
-		      url: './carrega/carregavariacao.php',
+		      url: '../Painel/carrega/carregavariacao.php',
 		      data: {'id_linha':id_linha},
               erro: function(){
                   alert('erro');

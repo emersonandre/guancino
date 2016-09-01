@@ -53,7 +53,7 @@ session_start();
                 </ol> 
                  <div class="container">
                       <div class="table-responsive" id="tab_linhas">
-                         <?php include './carrega/carregalinhas.php'; ?>
+                         <?php include '../Painel/carrega/carregalinhas.php'; ?>
                           
                       </div>
                 </div>
@@ -63,7 +63,7 @@ session_start();
 		$("#btnGravar").click(function(){
 			$.ajax({
 				type:'post',
-				url:'./valida/gravalinha.php',
+				url:'../Painel/valida/gravalinha.php',
 				data:{
 					'Nlinha':$('#cad_Nlinha').val(),
 					'Linha':$('#cad_Linha').val(),
@@ -71,31 +71,54 @@ session_start();
 				timeout: '10000',
 				error: function(error){
 					//alert("Erro!");
-                    $("#div_retorno").load('./pages/pag-danger.php');
+                    $("#div_retorno").load('../Painel/pages/pag-danger.php');
 				},
 				success: function(){
-					$('#tab_linhas').load('./carrega/carregalinhas.php');
-                    $('#div_retorno').load('./pages/pag-success.php');
+					$("#tab_linhas").load('../Painel/carrega/carregalinhas.php');
+                    $("#div_retorno").load('../Painel/pages/pag-success.php');
 					//alert("Cadastrado com Sucesso!");
 				}
 			});
 		});
-        
-        function aoClicarExcluir(id){
-            $.ajax({
-		      type:'post',
-		      url: 'deletalinha.php',
-		      data: {'id':id},
-              error: function(error){
-				  //alert("Erro!");
-                  $("#div_retorno").load('./pages/pag-exc-danger.php');
-              },
-		      success: function(){
-		          $("#tab_linhas").load('./valida/carregalinhas.php');
-                  $("#div_retorno").load('./pages/pag-exc-success.php');
-		          //alert("Excluido com Sucesso!");
-		      }
-
-		    });
+        function aoClicarExcluirLinha(id) {
+            var msg=confirm("ATENCAO: Isso excluira todos os horarios e variaçoes da linha, deseja prosseguir?");
+            if (msg){
+       // function aoClicarExcluirLinha(id){
+                $.ajax({
+                  type:'post',
+                  url: '../Painel/valida/deletalinha.php',
+                  data: {'id':id},
+                  statusCode:{
+                        200: function(){
+                            $("#tab_linhas").load('../Painel/valida/carregalinhas.php');
+                            $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-success.php');
+                          },
+                        411: function(){
+                              //acao do erro aqui
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-411.php');
+                          },
+                        412: function(){
+                              //acao do erro aqui
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-412.php');
+                          },
+                        413: function(){
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-413.php');
+                          },
+                        511: function(){
+                              //acao do erro aqui
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-511.php');
+                          },
+                        512: function(){
+                              //acao do erro aqui
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-512.php');
+                          },
+                        513: function(){
+                              $("#div_retorno").load('../Painel/pages/deletaLinhas/pag-513.php');
+                        }   
+                    }
+		      });
+            }else{
+                
+            }
         };
     </script>

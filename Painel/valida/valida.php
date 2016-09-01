@@ -7,7 +7,7 @@ $senha = md5($_POST['password']);
 
 //variaveis de conexão;
 
-include '../bd/conecta.php';
+include '../../Painel/bd/conecta.php';
 
 //resolve conexão com o banco!
 	$result = mysqli_query($conn,"SELECT id,usuario,flag FROM gtc_usuario WHERE usuario= '$login' AND senha= '$senha'");
@@ -17,7 +17,7 @@ include '../bd/conecta.php';
 	$_SESSION['id'] = $row['id'];   
     $_SESSION['login'] = $row['usuario'];
     $_SESSION['acesso'] = $row['flag'];    
-    header('location:../admin.php'); }}
+    header('location:../../Painel/admin.php'); }}
     else{
         header('location:http://www.guancino.com.br');
     }

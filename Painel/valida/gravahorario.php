@@ -3,18 +3,28 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
     $acesso = $_SESSION['acesso']; 
-?>
-<?php
-include '../bd/conecta.php';
+    
+// include do arquivo de conexao do banco de dados
+include '../../Painel/bd/conecta.php';
 
+//executa variaveis vindas do post
 $num_linha = $_POST['num_linha'];
-$id_variacao = $_POST['id_variacao'];
 $horario = $_POST['horario'];
+
+//verifica se variacao e null
+if (!empty($_POST['id_variacao'])) {
+	$id_variacao = $_POST['id_variacao'];
+}else{
+	$id_variacao = 0;
+}
+
+
+//verifica os botoes de auto selecao;
 $radio1 = $_POST['radio1'];
     if($radio1 == 'true'){
         $radio1 = '1';

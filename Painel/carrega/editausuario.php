@@ -3,7 +3,7 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
@@ -11,7 +11,7 @@ session_start();
 ?>
 <?php
 
-include '../bd/conecta.php';
+include '../../Painel/bd/conecta.php';
 
 $id_usuario = $_POST['id_usuario'];
                             
@@ -73,7 +73,7 @@ $id_usuario = $_POST['id_usuario'];
             console.log('user senha'+ user_senha);
 			$.ajax({
 				type:'post',
-				url:'./valida/at_cad_usuario.php',
+				url:'../Painel/valida/at_cad_usuario.php',
 				data:{
                     'user_id':$('#id_usuario').val(),
 					'user_nome':$('#user_nome').val(),
@@ -84,10 +84,10 @@ $id_usuario = $_POST['id_usuario'];
 				timeout: '10000',
                statusCode:{
                    200: function(){
-                        $('#div_retorno_update').load('./pages/cadastroUSER/pag-upt-success.php');
+                        $('#div_retorno_update').load('../Painel/pages/cadastroUSER/pag-upt-success.php');
                     },
                    402: function(){
-                       $('#div_retorno_update').load('./pages/cadastroUSER/pag-upt-info.php');
+                       $('#div_retorno_update').load('../Painel/pages/cadastroUSER/pag-upt-info.php');
                    }
                }
             });

@@ -1,7 +1,7 @@
 <?php
 $hostname = "localhost";
-$username = "master";
-$password = "145819";
+$username = "root";
+$password = "ua2nqvgc";
 $database = "painel_gtc";
 
 $conn = mysqli_connect($hostname, $username, $password ,$database);

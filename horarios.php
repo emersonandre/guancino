@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
     <style>
         .alin-table{
             text-align: center;
@@ -22,6 +23,11 @@
           margin-top: 10px; 
           width: 50%;
         }
+        .divpers{
+		   
+		   text-align: center;
+		   background-color:@brand-warning: #f0ad4e;
+	   }
     </style>
     
 </head>
@@ -36,12 +42,13 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h1>Horarios Transporte Coletivo Francisco Beltrão</h1>
+            <div class="col-lg-12 text-center">
+                <h3><strong>Horarios Transporte Coletivo Francisco Beltrão.</strong></h3>
+                <hr class="small">
                 <div class="form-group">
                     <select id="busca_linha" class="selectpicker form-control show-tick">
                             <option value="">Selecione a Linha...</option>
-                                <?php include '/horarios/linhas.php'; ?>
+                                <?php include 'horarios/linhas.php'; ?>
                                 <?php if ($result->num_rows > 0) {
                                       while($row = $result->fetch_assoc()) { ?>
                             <option value="<?php echo $row['id']?>"><?php echo $row['nome'] ?></option>
@@ -56,6 +63,22 @@
                 
             </div>
         </div>
+        <hr class="small">
+        <div class="row" id="Rodape">
+			<div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Guancino Transporte Coletivo Ltda.</strong>
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i>(46) 3524-7866</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> Em caso de dúvidas, os clientes podem enviar e-mail para
+									<a href="mailto:name@example.com">gtc@guancino.com </a>
+                        </li>
+                    </ul>
+				<hr class="small">
+                    <p class="text-muted">Copyright &copy; Emerson Andre Silvestrin - 2015</p>
+                    
+			</div>
+		</div>
     </div>
     <!-- /.container -->
 

@@ -3,7 +3,7 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
@@ -11,7 +11,7 @@ session_start();
 ?>
 <?php
 
-include '../bd/conecta.php';
+include '../../Painel/bd/conecta.php';
 
 $id_linha= $_POST['id_linha'];
 $variacao = $_POST['variacao'];

@@ -1,8 +1,8 @@
 <?php
 
-include 'conecta.php';
+include "conecta.php";
 
-$conn = mysqli_connect($hostname, $username, $password ,$database);
+//$conn = mysqli_connect($hostname, $username, $password ,$database);
 //consulta datas;  
 //select que recebe os parametros da funcao
     $sql = "SELECT 
@@ -12,5 +12,3 @@ $conn = mysqli_connect($hostname, $username, $password ,$database);
             WHERE 1
             ";
     $result = $conn->query($sql);
-
-?>

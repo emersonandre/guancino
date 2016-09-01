@@ -131,7 +131,7 @@ session_start();
 		$("#btnGravarHr").click(function(){
 			$.ajax({
 				type:'post',
-				url:'./valida/gravahorario.php',
+				url:'../Painel/valida/gravahorario.php',
                 async:false,
 				data:{
 					'num_linha':$('#num_linha').val(),
@@ -153,24 +153,24 @@ session_start();
                                 //console.log(num_linha);                 
                                 $.ajax({
                                   type:'post',
-                                  url: './carrega/carregahorarios.php',
+                                  url: '../Painel/carrega/carregahorarios.php',
                                   data: {'num_linha':num_linha,'id_variacao':id_variacao},
                                   success: function(data){
                                       $("#tabela_horarios").html(data);
-                                      $('#retorno').load('./pages/pag-success.php');
+                                      $('#retorno').load('../Painel/pages/pag-success.php');
                                   }
                                 });
                           },
                           400: function(){
                               //acao do erro aqui
-                              $('#retorno').load('./pages/cadastroHR/pag-cad-info.php');
+                              $('#retorno').load('../Painel/pages/cadastroHR/pag-cad-info.php');
                           },
                           401: function(){
                               //acao do erro aqui
-                              $('#retorno').load('./pages/pag-danger.php');
+                              $('#retorno').load('../Painel/pages/pag-danger.php');
                           },
                           500: function(){
-                              $('#retorno').load('./pages/cadastroHR/pag-cad-existe.php');
+                              $('#retorno').load('../Painel/pages/cadastroHR/pag-cad-existe.php');
                         }   
                     }
                 });
@@ -182,16 +182,16 @@ session_start();
         function aoClicarExcluirHr(id){
             $.ajax({
 		      type:'post',
-		      url: './valida/deletahorario.php',
+		      url: '../Painel/valida/deletahorario.php',
 		      data: {'id':id},
               error: function(error){
-                    $('#retorno').load('./pages/pag-exc-danger.php');
+                    $('#retorno').load('../Painel/pages/pag-exc-danger.php');
                     var num_linha = $('#num_linha').val();
                     var id_variacao = $('#id_variacao').val();
                     console.log(num_linha);
                     $.ajax({
                       type:'post',
-                      url: './carrega/carregahorarios.php',
+                      url: '../Painel/carrega/carregahorarios.php',
                       data: {'num_linha':num_linha,'id_variacao':id_variacao},
                       erro: function(){
                           alert('erro');
@@ -203,13 +203,13 @@ session_start();
                     });
 				},  
 		      success: function(){
-                  $('#retorno').load('./pages/pag-exc-success.php');
+                  $('#retorno').load('../Painel/pages/pag-exc-success.php');
                   var num_linha = $('#num_linha').val();
                   var id_variacao = $('#id_variacao').val();
                     console.log(num_linha);
                     $.ajax({
                       type:'post',
-                      url: './carrega/carregahorarios.php',
+                      url: '../Painel/carrega/carregahorarios.php',
                       data: {'num_linha':num_linha,'id_variacao':id_variacao},
                       erro: function(){
                           alert('erro');
@@ -231,7 +231,7 @@ session_start();
             console.log(num_linha);
             $.ajax({
 		      type:'post',
-		      url: './carrega/carregahorarios.php',
+		      url: '../Painel/carrega/carregahorarios.php',
 		      data: {'num_linha':num_linha},
               erro: function(){
                   alert('erro');
@@ -250,7 +250,7 @@ session_start();
             console.log(id_linha);
             $.ajax({
 		      type:'post',
-		      url: './valida/buscavariacao.php',
+		      url: '../Painel/valida/buscavariacao.php',
 		      data: {'id_linha':id_linha},
               erro: function(){
                   alert('erro');

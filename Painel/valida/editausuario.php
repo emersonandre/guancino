@@ -3,7 +3,7 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
@@ -29,7 +29,7 @@ session_start();
                         <i class="fa fa-file"></i> Blank Page
                     </li>
                 </ol>
-                <?php include './bd/conecta.php'; ?>
+                <?php include '../../Painel/bd/conecta.php'; ?>
                 <select id="id_usuario" class="selectpicker form-control show-tick">
                     <option value="">Selecione a Variação...</option>
                         <?php                              
@@ -51,7 +51,7 @@ session_start();
             var id_usuario = $('#id_usuario').val();
             $.ajax({
 		      type:'post',
-		      url: './carrega/carregahorarios.php',
+		      url: '../../Painel/carrega/carregahorarios.php',
 		      data: {
                   'id_usuario':id_usuario
               },

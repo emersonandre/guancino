@@ -3,14 +3,14 @@ session_set_cookie_params(3600);
 session_start();
     if((!isset ($_SESSION['id']) == true) and (!isset ($_SESSION['login']) == true))
     {
-        header('location:./login/index.html');
+        header('location:../Painel/login/index.html');
     }
     $id_user = $_SESSION['id'];
     $logado = $_SESSION['login'];
     $acesso = $_SESSION['acesso']; 
 
 
- include "./bd/conecta.php"; 
+ include "../Painel/bd/conecta.php"; 
 //select que recebe os parametros da funcao
     $sql = "SELECT 
                 id
@@ -19,6 +19,7 @@ session_start();
                 ,obs 
             FROM gtc_linhas
             WHERE 1
+            order by numero
             ";
 
     $tabela = "<table class='table table-hover'>
@@ -40,7 +41,7 @@ session_start();
             $tabela .="<td class='alin-table'><span><span class='badge'>".$row["numero"]."</span></span></td>";
             $tabela .="<td class='alin-table'>".$row["nome"]."</td>";
             $tabela .="<td class='alin-table'>".$row["obs"]."</td>";
-            $tabela .="<td class='alin-table'><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluir($(this).val())' ><span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
+            $tabela .="<td class='alin-table'><button class='btn btn-danger' value='".$row["id"]."'  onClick = 'aoClicarExcluirLinha($(this).val())' ><span class='badge'><i class='fa fa-trash-o fa-lg'></i></span> Deletar</a></button></td>";
             "<br>";
         }
     }
